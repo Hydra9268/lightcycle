@@ -1,6 +1,6 @@
 # Lightcycle
 
-!(https://kxmode.com/images/lightcycle-logo.png)
+![Lightcycle logo](https://kxmode.com/images/lightcycle-logo.png)
 
 Lightcycle is an abstraction library designed to optimize browser memory management, focusing on DOM elements and asynchronous operations. Inspired by the iconic light cycles in the movie *Tron*, Lightcycle aims to provide efficient "light cycles" in browser environments, ensuring smooth performance and improved garbage collection. This tool is also Node.js-compatible, offering a backend solution.
 
