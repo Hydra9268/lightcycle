@@ -2,7 +2,7 @@
 
 ![Light Cycle logo](https://kxmode.com/images/lightcycle-logo.png)
 
-Light Cycle is an abstraction library designed to optimize browser memory management, focusing on DOM elements and asynchronous operations. Inspired by the iconic light cycles in the movie *Tron*, Light Cycle aims to provide efficient "light cycles" in browser environments, ensuring smooth performance and improved garbage collection. This tool is also Node.js-compatible, offering a backend solution.
+Light Cycle is an abstraction library designed to optimize browser memory management by minimizing the frequency and impact of garbage collection through more effective resource handling. It focuses on efficiently managing DOM elements and asynchronous operations, helping to prevent memory leaks and reduce browser strain. Inspired by the iconic light cycles in *Tron*, Light Cycle ensures that processes run smoothly and are cleaned up swiftly, improving overall performance. Additionally, it is compatible with Node.js, providing backend solutions to enhance system memory efficiency even further.
 
 ## Key Features
 - **Abstracted Memory Management**: Light Cycle ensures that all asynchronous DOM operations are monitored and cleaned up after execution, preventing memory leaks.
