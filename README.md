@@ -1,16 +1,16 @@
-# Lightcycle
+# Light Cycle
 
-![Lightcycle logo](https://kxmode.com/images/lightcycle-logo.png)
+![Light Cycle logo](https://kxmode.com/images/lightcycle-logo.png)
 
-Lightcycle is an abstraction library designed to optimize browser memory management, focusing on DOM elements and asynchronous operations. Inspired by the iconic light cycles in the movie *Tron*, Lightcycle aims to provide efficient "light cycles" in browser environments, ensuring smooth performance and improved garbage collection. This tool is also Node.js-compatible, offering a backend solution.
+Light Cycle is an abstraction library designed to optimize browser memory management, focusing on DOM elements and asynchronous operations. Inspired by the iconic light cycles in the movie *Tron*, Light Cycle aims to provide efficient "light cycles" in browser environments, ensuring smooth performance and improved garbage collection. This tool is also Node.js-compatible, offering a backend solution.
 
 ## Key Features
-- **Abstracted Memory Management**: Lightcycle ensures that all asynchronous DOM operations are monitored and cleaned up after execution, preventing memory leaks.
-- **Node.js Compatibility**: Lightcycle works seamlessly with Node.js, enabling efficient resource management both on the client and server side.
-- **Improved Performance**: By proactively removing unnecessary DOM elements and event listeners, Lightcycle significantly reduces memory consumption and boosts application performance.
+- **Abstracted Memory Management**: Light Cycle ensures that all asynchronous DOM operations are monitored and cleaned up after execution, preventing memory leaks.
+- **Node.js Compatibility**: Light Cycle works seamlessly with Node.js, enabling efficient resource management both on the client and server side.
+- **Improved Performance**: By proactively removing unnecessary DOM elements and event listeners, Light Cycle significantly reduces memory consumption and boosts application performance.
 
 ## Installation
-You can install Lightcycle via npm:
+You can install Light Cycle via npm:
 
 ```bash
 npm install Lightcycle
@@ -18,7 +18,7 @@ npm install Lightcycle
 
 ## Modularity
 
-Lightcycle is designed as a modular package, allowing you to import only the classes you need for your project. Each class is self-contained, making it easy to integrate individual features without importing the entire package.
+Light Cycle is designed as a modular package, allowing you to import only the classes you need for your project. Each class is self-contained, making it easy to integrate individual features without importing the entire package.
 
 ### Example:
 
@@ -36,7 +36,7 @@ const memoryProfiler = new MemoryProfiler();
 const asyncDomManager = new AsyncDomManager();
 ```
 
-This modularity ensures that you can optimize your application by only including the necessary parts of Lightcycle.
+This modularity ensures that you can optimize your application by only including the necessary parts of Light Cycle.
 
 ### Example Code:
 
@@ -45,13 +45,13 @@ You can see detailed usage demos in each class's folder.
 ## Benefits
 
 - **Generalized Memory Management**: 
-  Lightcycle is agnostic to the type of DOM element or asynchronous operation, making it applicable across various scenarios, from API calls to user-triggered events and animations.
+  Light Cycle is agnostic to the type of DOM element or asynchronous operation, making it applicable across various scenarios, from API calls to user-triggered events and animations.
   
 - **Proactive Cleanup**: 
   After every async operation, the associated DOM elements and event listeners are automatically cleaned up to free memory and prevent leaks.
   
 - **Prevents Memory Leaks**: 
-  Lightcycle helps prevent memory retention by actively managing DOM elements and removing them when they are no longer needed.
+  Light Cycle helps prevent memory retention by actively managing DOM elements and removing them when they are no longer needed.
 
 ## Use Cases
 
