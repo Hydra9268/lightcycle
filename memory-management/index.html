@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lightcycle &mdash; Memory Management demo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+        html, body      { display: flex; margin: 0; justify-content: center; }
+        body            { background: #222 url(../__assets/lightcycle-bg-alt.jpg) left 0 fixed; font-family: "Titillium Web", sans-serif; font-size: 20px; color: #fff; }
+        .grid-display   { display: grid; grid-template-columns: 1fr; row-gap: 20px; margin-top: 40px; }
+        table           { width: 600px; }
+        td              { padding: 10px; border: 1px solid silver; text-align: center; }
+        img             { width: 150px; }
+        .highlight      { color: #F47C34; }
+        .lowlight       { color: #6FCDE4; }
+        .align-center   { text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="grid-display align-center">
+    <div>
+        <img src="../__assets/lightcycle-logo.png">
+        <h2 class="lowlight"><span class="highlight">Memory</span> Management</h2>
+    </div>
+    <div>
+        <p>View Devtool Console</p>
+    </div>
+</div>
+    
+<script>
+// usage demo
+(async () => {
+    try {
+        const { default: MemoryManager } = await import('./memory-management.js');
+
+        // Chunking Large Datasets example
+        const memoryManager = new MemoryManager({
+            memoryThreshold: 150 * 1024 * 1024, // 150MB
+            checkInterval: 3000,
+            lowTraffic: () => true
+        });
+
+        const chunkSize = 7500;
+        const subChunkSize = 1000;
+        const largeDataArray = Array.from({ length: 1000000 }, (_, i) => i);
+
+        const processSubChunks = async (chunk) => {
+            for (let subIndex = 0; subIndex < chunk.length; subIndex += subChunkSize) {
+                const subChunk = chunk.slice(subIndex, subIndex + subChunkSize);
+                await new Promise((resolve) => {
+                    memoryManager.processLargeDataInChunks(subChunk, (processedChunk) => {
+                        console.log(`Processing sub-chunk of size ${processedChunk.length}`);
+                        console.log(`Memory usage during processing: ${memoryManager.getMemoryUsage()} MB`);
+                        resolve();
+                    });
+                });
+            }
+        };
+
+        for (let chunkIndex = 0; chunkIndex < largeDataArray.length; chunkIndex += chunkSize) {
+            const chunk = largeDataArray.slice(chunkIndex, chunkIndex + chunkSize);
+            await processSubChunks(chunk);
+            console.log('All sub-chunks processed for chunk.');
+        }
+
+        console.log("All chunks processed successfully");
+
+        // Other examples
+        setTimeout(() => { memoryManager.stopMonitoring(); }, 120000); // Stop monitoring after 2 minutes
+        setTimeout(() => { memoryManager.simulateTrafficPeriod(false); }, 10000); // Simulate traffic period for testing
+        setTimeout(() => { memoryManager.simulateTrafficPeriod(true); }, 30000); // Simulate low-traffic period
+
+    } catch (error) {
+        console.error('Script loading failed', error);
+    }
+})();
+</script>
+
+</body>
+</html>

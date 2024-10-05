@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lightcycle &mdash; DOM Element Manager demo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+        html, body      { display: flex; margin: 0; justify-content: center; }
+        body            { background: #222 url(../__assets/lightcycle-bg-alt.jpg) left 0 fixed; font-family: "Titillium Web", sans-serif; font-size: 20px; color: #fff; }
+        .grid-display   { display: grid; grid-template-columns: 1fr; row-gap: 20px; margin-top: 40px; }
+        table           { width: 600px; }
+        td              { padding: 10px; border: 1px solid silver; text-align: center; }
+        h1              { font-family: "Honk", system-ui; font-size: 70px; margin: 0; padding: 0; }
+        img             { width: 150px; }
+        .highlight      { color: #F47C34; }
+        .lowlight       { color: #6FCDE4; }
+        .align-center   { text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="grid-display">
+    <div class="align-center">
+        <img src="../__assets/lightcycle-logo.png">
+        <h2 class="lowlight"><span class="highlight">DOM</span> Element Manager</h2>
+    </div>
+    <div>
+        <ul id="dynamic-list"></ul>
+    </div>
+    <div>
+        <table id="table-body" cellspacing="0"></table>
+    </div>
+</div>
+
+<script>
+// usage demo
+(async () => {
+    try {
+        const { default: DomElementManager } = await import('./dom-element-manager.js');
+
+        const tableBody = document.getElementById('table-body');
+        const container = document.getElementById('dynamic-list');
+        const domElementManager = new DomElementManager();
+
+        // Example: Updating a dynamic list
+        function updateDynamicList(items) {
+            domElementManager.updateContainer(container, items, 'li', (element, item) => {
+                element.textContent = item;
+            });
+        }
+
+        // Example: Updating a dynamic table
+        function updateDynamicTable(rows) {
+            domElementManager.updateContainer(tableBody, rows, 'tr', (rowElement, rowData) => {
+                rowElement.innerHTML = ''; // Clear row content
+                rowData.forEach((cellData) => {
+                    const td = domElementManager.getElement('td'); // Get reusable <td> element
+                    td.textContent = cellData;
+                    rowElement.appendChild(td);
+                });
+            });
+        }
+
+        // Simulate dynamic content updates
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        delay(5000)
+        .then(() => {
+            const listItems = ['Apples', 'Bananas', 'Grapes', 'Watermelon'];
+            updateDynamicList(listItems);
+
+            const tableRows = [
+                ['Cell 1-1', 'Cell 1-2'],
+                ['Cell 2-1', 'Cell 2-2']
+            ];
+            updateDynamicTable(tableRows);
+            return delay(5000);
+        })
+        .then(() => {
+            const listItems = ['Hamburger', 'Pizza', 'Tacos', 'Fries'];
+            updateDynamicList(listItems);
+
+            const tableRows = [
+                ['🟥', '🟨'],
+                ['🟩', '🟦']
+            ];
+            updateDynamicTable(tableRows);
+            return delay(5000);
+        })
+        .then(() => {
+            const listItems = ['Milk', 'Eggs', 'Coffee', 'Cereal'];
+            updateDynamicList(listItems);
+
+            const tableRows = [
+                ['Lorem ipsum dolor sit amet', 'Consectetur adipiscing elit sed doeiusmod','Tempor incididunt utlabore'],
+                ['Etdolore magna aliqua', 'Gloasdrf Nufsadeg Efwac', 'Loasimt Wesdefli Bumliasim'],
+                ['Qasdcaty Muscaroli Stumpdeft', 'Xartyisum Jumoslik Terrsays','Cervumtil Yadfergus Gorflavait']
+            ];
+            updateDynamicTable(tableRows);
+            return delay(5000);
+        })
+        .then(() => {
+            domElementManager.releaseElement(tableBody);
+            domElementManager.releaseElement(container);
+            return delay(5000);
+        })
+        .then(() => {
+            const listItems = ['🐔', '🐬', '🦁', '🐵'];
+            updateDynamicList(listItems);
+
+            const tableRows = [
+                ['🏡', '🌞', '🚗', '🌳']
+            ];
+            updateDynamicTable(tableRows);
+        });
+
+    } catch (error) {
+        console.error('Script loading failed', error);
+    }
+})();
+</script>
+
+</body>
+</html>
