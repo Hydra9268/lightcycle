@@ -9,6 +9,10 @@ Light Cycle is an abstraction library designed to optimize browser memory manage
 - **Node.js Compatibility**: Light Cycle works seamlessly with Node.js, enabling efficient resource management both on the client and server side.
 - **Improved Performance**: By proactively removing unnecessary DOM elements and event listeners, Light Cycle significantly reduces memory consumption and boosts application performance.
 
+### Project Status: In Development
+
+This project is currently under active development. Features, documentation, and overall structure may change as work progresses. Contributions are welcome, but some areas may still be incomplete or evolving.
+
 ## Installation
 You can install Light Cycle via npm:
 
