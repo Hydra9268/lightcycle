@@ -25,6 +25,15 @@ Light Cycle is designed as a modular package, allowing you to import only the cl
 If you only need to use the memory profiling functionality, you can import the corresponding class:
 
 ```js
+import MemoryProfiler from './mem-profiling-learning/abstract-memory-profiling-and-learning.js';
+const memoryProfiler = new MemoryProfiler();
+```
+
+This modularity ensures that you can optimize your application by only including the necessary parts of Light Cycle.
+
+All classes:
+
+```js
 import MemoryManager from './memory-management/memory-management.js';
 import DomElementManager from './dom-element-manager/dom-element-manager.js';
 import MemoryProfiler from './mem-profiling-learning/abstract-memory-profiling-and-learning.js';
@@ -35,8 +44,6 @@ const domElementManager = new DomElementManager();
 const memoryProfiler = new MemoryProfiler();
 const asyncDomManager = new AsyncDomManager();
 ```
-
-This modularity ensures that you can optimize your application by only including the necessary parts of Light Cycle.
 
 ### Example Code:
 
