@@ -13,12 +13,14 @@ Light Cycle is an abstraction library designed to optimize browser memory manage
 
 This project is currently under development. Features, documentation, and overall structure may change as work progresses. Contributions are welcome, but some areas may still be incomplete or evolving.
 
+<!--
 ## Installation
 You can install Light Cycle via npm:
 
 ```bash
 npm install Lightcycle
 ```
+-->
 
 ## Modularity
 
